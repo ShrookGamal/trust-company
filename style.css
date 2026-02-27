@@ -1261,3 +1261,145 @@ html {
 [dir="rtl"] .f-details {
     text-align: right;
 }
+/* سكشن معرض الإنجازات المطور V29 - Luxury Dark Theme */
+.achievements-v29 {
+    padding: 120px 0;
+    /* خلفية دجردايه غامق ملكي متناسق مع ألوان اللوجو */
+    background: linear-gradient(135deg, #0d0d2b 0%, #1a1a5e 50%, #4a148c 100%);
+    position: relative;
+    overflow: hidden;
+    color: white;
+}
+
+/* وهج فني خلف الكروت */
+.achievements-v29::before {
+    content: '';
+    position: absolute;
+    top: 20%;
+    left: -10%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(128, 43, 125, 0.3) 0%, transparent 70%);
+    z-index: 1;
+}
+
+.achievements-v29 .container {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 0 5%;
+    position: relative;
+    z-index: 5;
+}
+
+.v29-header {
+    text-align: center;
+    margin-bottom: 70px;
+}
+
+.v29-header h2 {
+    font-size: 3rem;
+    font-weight: 900;
+    margin-bottom: 20px;
+    text-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.v29-line {
+    width: 80px;
+    height: 5px;
+    background: #802b7d; /* موف اللوجو */
+    margin: 0 auto;
+    border-radius: 10px;
+}
+
+/* شبكة الإنجازات: 2 في السطر */
+.ach-grid-v29 {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* كارتين بالظبط في السطر */
+    gap: 100px;
+}
+
+.ach-card {
+    background: rgba(255, 255, 255, 0.05); /* ستايل زجاجي شفاف */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 35px;
+    overflow: hidden;
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    height: auto; /* يفتح على قد الكلام */
+}
+
+.ach-card:hover {
+    transform: translateY(-15px);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: #802b7d;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+}
+
+/* السلايدر الداخلي للصور */
+.innerSwiper {
+    width: 100%;
+    height: 320px; /* طول ثابت للصور لتوحيد شكل الكروت */
+    position: relative;
+}
+
+.innerSwiper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* يملأ المساحة بدون تمطيط */
+}
+
+/* تخصيص نقاط السويبر */
+.swiper-pagination-bullet {
+    background: rgba(255, 255, 255, 0.5) !important;
+}
+
+.swiper-pagination-bullet-active {
+    background: #3b82f6 !important; /* أزرق اللوجو */
+    width: 20px !important;
+    border-radius: 5px !important;
+}
+
+/* محتوى النص */
+.ach-text {
+    padding: 35px;
+    text-align: start; /* يتبع اتجاه اللغة تلقائياً */
+}
+
+[dir="rtl"] .ach-text { text-align: right; }
+[dir="ltr"] .ach-text { text-align: left; }
+
+.ach-text h3 {
+    color: #fff;
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    line-height: 1.4;
+    min-height: 50px; /* لتوحيد العناوين */
+}
+
+.ach-text p {
+    color: #ccc !important; /* لون رمادي فاتح مريح للعين في الوضع المظلم */
+    font-size: 1rem;
+    line-height: 1.8;
+    margin: 0;
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* تحسين الموبايل: كارت واحد في السطر */
+@media (max-width: 992px) {
+    .ach-grid-v29 {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .v29-header h2 {
+        font-size: 2.2rem;
+    }
+
+    .innerSwiper {
+        height: 250px;
+    }
+}
