@@ -1,6 +1,4 @@
 gsap.registerPlugin(ScrollTrigger);
-
-// 1. دالة الترجمة الذكية
 function updateLanguage(lang) {
     const isRtl = lang === 'ar';
     document.documentElement.setAttribute('lang', lang);
@@ -16,8 +14,6 @@ function updateLanguage(lang) {
             }
         }
     });
-
-    // تحديث اتجاه السلايدرات عند تغيير اللغة
     document.querySelectorAll('.innerSwiper').forEach(s => {
         if (s.swiper) {
             s.swiper.changeLanguageDirection(isRtl ? 'rtl' : 'ltr');
@@ -29,10 +25,7 @@ function updateLanguage(lang) {
 }
 
 window.addEventListener('load', () => {
-    // تشغيل اللغة الافتراضية
     updateLanguage('ar');
-
-    // --- 2. أنيميشن الدخول (إصلاح اختفاء الناف بار) ---
     const entranceTL = gsap.timeline();
     entranceTL.from(".floating-nav", { 
         y: -100, opacity: 0, duration: 1, ease: "power4.out",
@@ -40,8 +33,6 @@ window.addEventListener('load', () => {
     })
     .from(".hero-text h1", { x: 50, opacity: 0, duration: 0.8 }, "-=0.3")
     .from(".glass-form-v4", { scale: 0.9, opacity: 0, duration: 1, ease: "back.out(1.5)" }, "-=0.6");
-
-    // --- 3. مراقبة السكرول (ناف بار + Active Link) ---
     const navBar = document.querySelector(".floating-nav");
     const sections = document.querySelectorAll("section[id]");
     const navLinks = document.querySelectorAll(".nav-links a");
@@ -60,8 +51,6 @@ window.addEventListener('load', () => {
             if (current && link.getAttribute("href").includes(current)) link.classList.add("active");
         });
     });
-
-    // --- 4. تشغيل الـ 12 سلايدر ---
     new Swiper(".innerSwiper", {
         loop: true,
         autoplay: { delay: 3500, disableOnInteraction: false },
@@ -69,12 +58,8 @@ window.addEventListener('load', () => {
         observer: true,
         observeParents: true
     });
-
-    // --- 5. أنيميشن السكاشن ---
     gsap.from(".about-main-img", { scrollTrigger: { trigger: ".about-v5", start: "top 80%" }, scale: 0.8, opacity: 0, duration: 1 });
     gsap.from(".service-item-v7", { scrollTrigger: { trigger: ".services-v7", start: "top 80%" }, y: 60, opacity: 0, stagger: 0.2, duration: 1 });
-
-    // --- 6. إعادة تفعيل العدادات (Counters) - الحتة اللي كانت ناقصة ---
     const counters = document.querySelectorAll('.counter, .count');
     counters.forEach(counter => {
         const target = +counter.getAttribute('data-target');
@@ -101,8 +86,6 @@ window.addEventListener('load', () => {
 
     ScrollTrigger.refresh();
 });
-
-// --- 7. تبديل اللغة ---
 const langBtn = document.getElementById('langBtn');
 if (langBtn) {
     langBtn.onclick = () => {
@@ -113,7 +96,6 @@ if (langBtn) {
     };
 }
 
-// --- 8. أوكورديون التدريب ---
 document.querySelectorAll('.acc-header-v24').forEach(header => {
     header.onclick = () => {
         const item = header.parentElement;
@@ -128,8 +110,6 @@ document.querySelectorAll('.acc-header-v24').forEach(header => {
         content.style.maxHeight = item.classList.contains('active') ? content.scrollHeight + "px" : null;
     };
 });
-
-// --- 9. موبايل منيو ---
 const menuToggle = document.getElementById('menuToggle');
 const mobileMenu = document.getElementById('mobileMenu');
 if (menuToggle) {
@@ -137,8 +117,6 @@ if (menuToggle) {
         mobileMenu.style.display = mobileMenu.style.display === 'flex' ? 'none' : 'flex';
     };
 }
-
-// --- 10. فورم الواتساب ---
 const consultForm = document.getElementById('consultForm');
 if (consultForm) {
     consultForm.onsubmit = (e) => {
@@ -146,5 +124,64 @@ if (consultForm) {
         const name = document.getElementById('name').value;
         const sub = document.getElementById('subject').value;
         window.open(`https://wa.me/962798502477?text=${encodeURIComponent("*طلب استشارة*\nالاسم: "+name+"\nالمجال: "+sub)}`, '_blank');
+    };
+}
+function openRegModal(courseName) {
+    const modal = document.getElementById('trainingModal');
+    const courseText = document.getElementById('selectedCourseName');
+    courseText.innerText = courseName;
+    modal.style.display = "flex";
+}
+
+function closeRegModal() {
+    document.getElementById('trainingModal').style.display = "none";
+}
+
+window.onclick = function(event) {
+    const modal = document.getElementById('trainingModal');
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+const regForm = document.getElementById('regForm');
+if (regForm) {
+    regForm.onsubmit = (e) => {
+        e.preventDefault();
+        const name = document.getElementById('regName').value;
+        const phone = document.getElementById('regPhone').value;
+        const course = document.getElementById('selectedCourseName').innerText;
+        
+        const companyPhone = "962798502477";
+        const message = `*طلب تسجيل في دورة تدريبية*\n\n*الأسم:* ${name}\n*رقم الهاتف:* ${phone}\n*الدورة المطلوبة:* ${course}`;
+        
+        window.open(`https://wa.me/${companyPhone}?text=${encodeURIComponent(message)}`, '_blank');
+        closeRegModal();
+    };
+}
+const fileInput = document.getElementById('jobCV');
+if (fileInput) {
+    fileInput.onchange = () => {
+        if (fileInput.files.length > 0) {
+            document.querySelector('.file-msg').innerText = fileInput.files[0].name;
+        }
+    };
+}
+const careerForm = document.getElementById('careerFormV32');
+if (careerForm) {
+    careerForm.onsubmit = (e) => {
+        e.preventDefault();      
+        const name = document.getElementById('jobName').value;
+        const phone = document.getElementById('jobPhone').value;
+        const spec = document.getElementById('jobSpec').value;
+        const fileName = fileInput.files[0] ? fileInput.files[0].name : "لا يوجد";        
+        const companyPhone = "962798502477";
+        const message = `*طلب توظيف جديد (TRUST)*\n\n` +
+                        `*الأسم:* ${name}\n` +
+                        `*الهاتف:* ${phone}\n` +
+                        `*التخصص:* ${spec}\n` +
+                        `*اسم الملف المرفق:* ${fileName}\n\n` +
+                        `أرغب في الانضمام لفريقكم، وسأقوم بإرفاق ملف الـ CV في الرسالة التالية.`;
+        
+        window.open(`https://wa.me/${companyPhone}?text=${encodeURIComponent(message)}`, '_blank');
     };
 }
