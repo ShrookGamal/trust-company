@@ -63,7 +63,6 @@ window.addEventListener('load', () => {
     const counters = document.querySelectorAll('.counter, .count');
     counters.forEach(counter => {
         const target = +counter.getAttribute('data-target');
-        
         ScrollTrigger.create({
             trigger: counter,
             start: "top 90%",
@@ -95,7 +94,6 @@ if (langBtn) {
         updateLanguage(newLang);
     };
 }
-
 document.querySelectorAll('.acc-header-v24').forEach(header => {
     header.onclick = () => {
         const item = header.parentElement;
@@ -122,8 +120,32 @@ if (consultForm) {
     consultForm.onsubmit = (e) => {
         e.preventDefault();
         const name = document.getElementById('name').value;
+        const phone = document.getElementById('phone').value;
         const sub = document.getElementById('subject').value;
-        window.open(`https://wa.me/962798502477?text=${encodeURIComponent("*طلب استشارة*\nالاسم: "+name+"\nالمجال: "+sub)}`, '_blank');
+        const details = document.getElementById('details').value || "No details";
+        
+        const emailTo = "info@qtrusts.com";
+        const subject = "New Consultation Request";
+        const body = `Name: ${name}\nPhone: ${phone}\nField: ${sub}\nDetails: ${details}`;
+        
+        window.location.href = `mailto:${emailTo}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    };
+}
+const careerForm = document.getElementById('careerFormV32');
+if (careerForm) {
+    careerForm.onsubmit = (e) => {
+        e.preventDefault();      
+        const name = document.getElementById('jobName').value;
+        const phone = document.getElementById('jobPhone').value;
+        const spec = document.getElementById('jobSpec').value;
+        const fileInput = document.getElementById('jobCV');
+        const fileName = fileInput.files[0] ? fileInput.files[0].name : "No file attached";        
+        
+        const emailTo = "info@qtrusts.com";
+        const subject = "Job Application";
+        const body = `Name: ${name}\nPhone: ${phone}\nSpecialty: ${spec}\nAttached File Name: ${fileName}`;
+        
+        window.location.href = `mailto:${emailTo}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     };
 }
 function openRegModal(courseName) {
@@ -139,10 +161,9 @@ function closeRegModal() {
 
 window.onclick = function(event) {
     const modal = document.getElementById('trainingModal');
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
+    if (event.target == modal) { modal.style.display = "none"; }
 }
+
 const regForm = document.getElementById('regForm');
 if (regForm) {
     regForm.onsubmit = (e) => {
@@ -151,37 +172,34 @@ if (regForm) {
         const phone = document.getElementById('regPhone').value;
         const course = document.getElementById('selectedCourseName').innerText;
         
-        const companyPhone = "962798502477";
-        const message = `*طلب تسجيل في دورة تدريبية*\n\n*الأسم:* ${name}\n*رقم الهاتف:* ${phone}\n*الدورة المطلوبة:* ${course}`;
+        const lowerCourse = course.toLowerCase();
+        let targetLink = "";
+        if (lowerCourse.includes('nursing') || lowerCourse.includes('تمريض')) {
+            const whatsapp30 = "962797711230"; 
+            targetLink = `https://wa.me/${whatsapp30}?text=${encodeURIComponent("*طلب تسجيل تمريض*\nالاسم: "+name+"\nالدورة: "+course)}`;
+            window.open(targetLink, '_blank');
+        } 
+        else if (lowerCourse.includes('lab') || lowerCourse.includes('microbiology') || lowerCourse.includes('hematology') || lowerCourse.includes('cytology') || lowerCourse.includes('ascp') || lowerCourse.includes('مختبرات')) {
+            const whatsapp47 = "962798502477";
+            targetLink = `https://wa.me/${whatsapp47}?text=${encodeURIComponent("*طلب تسجيل مختبرات*\nالاسم: "+name+"\nالدورة: "+course)}`;
+            window.open(targetLink, '_blank');
+        }
+        else {
+            const emailTo = "info@qtrusts.com";
+            const subject = "Course Registration Request";
+            const body = `Name: ${name}\nPhone: ${phone}\nCourse: ${course}`;
+            window.location.href = `mailto:${emailTo}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        }
         
-        window.open(`https://wa.me/${companyPhone}?text=${encodeURIComponent(message)}`, '_blank');
         closeRegModal();
     };
 }
-const fileInput = document.getElementById('jobCV');
-if (fileInput) {
-    fileInput.onchange = () => {
-        if (fileInput.files.length > 0) {
-            document.querySelector('.file-msg').innerText = fileInput.files[0].name;
+
+const fileInputUI = document.getElementById('jobCV');
+if (fileInputUI) {
+    fileInputUI.onchange = () => {
+        if (fileInputUI.files.length > 0) {
+            document.querySelector('.file-msg').innerText = fileInputUI.files[0].name;
         }
-    };
-}
-const careerForm = document.getElementById('careerFormV32');
-if (careerForm) {
-    careerForm.onsubmit = (e) => {
-        e.preventDefault();      
-        const name = document.getElementById('jobName').value;
-        const phone = document.getElementById('jobPhone').value;
-        const spec = document.getElementById('jobSpec').value;
-        const fileName = fileInput.files[0] ? fileInput.files[0].name : "لا يوجد";        
-        const companyPhone = "962798502477";
-        const message = `*طلب توظيف جديد (TRUST)*\n\n` +
-                        `*الأسم:* ${name}\n` +
-                        `*الهاتف:* ${phone}\n` +
-                        `*التخصص:* ${spec}\n` +
-                        `*اسم الملف المرفق:* ${fileName}\n\n` +
-                        `أرغب في الانضمام لفريقكم، وسأقوم بإرفاق ملف الـ CV في الرسالة التالية.`;
-        
-        window.open(`https://wa.me/${companyPhone}?text=${encodeURIComponent(message)}`, '_blank');
     };
 }

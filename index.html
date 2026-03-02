@@ -58,28 +58,32 @@
 <div class="glass-form-v4">
     <h3 data-ar="طلب استشارة " data-en=" Consultation">طلب استشارة </h3>
     <form id="consultForm">
-        <div class="form-row">
-            <div class="input-box">
-                <input type="text" id="name" placeholder="الاسم " required>
-            </div>
-            <div class="input-box">
-                <input type="tel" id="phone" placeholder="رقم الهاتف" required>
-            </div>
-        </div>
-
+    <div class="form-row">
         <div class="input-box">
-            <input type="text" id="subject" placeholder="مجال الاستشارة " required>
+            <label data-ar="الاسم الكامل" data-en="Full Name">الاسم الكامل</label>
+            <input type="text" id="name" required>
         </div>
-
         <div class="input-box">
-            <textarea id="details" rows="2" placeholder="تفاصيل إضافية ..."></textarea>
+            <label data-ar="رقم الهاتف" data-en="Phone Number">رقم الهاتف</label>
+            <input type="tel" id="phone" required>
         </div>
+    </div>
 
-        <button type="submit" class="wa-submit-btn">
-            <span data-ar="إرسال الطلب" data-en="Send Request">إرسال الطلب</span>
-            <i class="fab fa-whatsapp"></i>
-        </button>
-    </form>
+    <div class="input-box">
+        <label data-ar="مجال الاستشارة" data-en="Consultation Field">مجال الاستشارة</label>
+        <input type="text" id="subject" required>
+    </div>
+
+    <div class="input-box">
+        <label data-ar="تفاصيل إضافية" data-en="Additional Details">تفاصيل إضافية</label>
+        <textarea id="details" rows="2"></textarea>
+    </div>
+
+    <button type="submit" class="wa-submit-btn">
+        <span data-ar="إرسال الطلب" data-en="Send Request">إرسال الطلب</span>
+        <i class="fab fa-whatsapp"></i>
+    </button>
+</form>
 </div>
         </div>
 </section>
@@ -481,7 +485,6 @@
             <h2 data-ar="الاعتمادات والشراكات الدولية" data-en="Accreditations & Global Partnerships">الاعتمادات والشراكات الدولية</h2>
             <div class="p-line"></div>
         </div>
-
         <div class="p-grid-v25">
 <div class="p-group-v25">
     <h4 data-ar="مراكز امتحانات معتمدة" data-en="Authorized Exam Centers">مراكز امتحانات معتمدة</h4>
@@ -507,23 +510,46 @@
         </div>
     </div>
 </div>
-            <div class="p-group-v25">
-                <h4 data-ar="جهات اعتماد البرامج" data-en="Accrediting Bodies">جهات اعتماد البرامج</h4>
-                <div class="logo-stack-v25">
-                    <div class="logo-item-v25"><span>AHA</span></div>
-                    <div class="logo-item-v25"><span>AAA</span></div>
-                    <div class="logo-item-v25"><span data-ar="المجلس التمريضي" data-en="Nursing Council">المجلس التمريضي</span></div>
-                    <div class="logo-item-v25"><span data-ar="المجلس الصحي العالي" data-en="High Health Council">المجلس الصحي العالي</span></div>
-                    <div class="logo-item-v25"><span data-ar="المجلس الطبي" data-en="Medical Council">المجلس الطبي</span></div>
-                </div>
-            </div>
-            <div class="p-group-v25">
-                <h4 data-ar="الوكالات والتمثيل الدولي" data-en="International Agencies">الوكالات والتمثيل الدولي</h4>
-                <div class="logo-stack-v25">
-                    <div class="logo-item-v25"><span>CAP (Pathologists)</span></div>
-                    <div class="logo-item-v25"><span>GenQA</span></div>
-                </div>
-            </div>
+<div class="p-group-v25">
+    <h4 data-ar="جهات اعتماد البرامج" data-en="Accrediting Bodies">جهات اعتماد البرامج</h4>
+    <div class="logo-stack-v25">
+                <div class="logo-item-v25">
+            <img src="images/aha.jpeg" alt="AHA" class="center-logo-img">
+            <span>AHA (American Heart Association)</span>
+        </div>
+        <div class="logo-item-v25">
+            <img src="images/aaa.jpeg" alt="AAA" class="center-logo-img">
+            <span>AAA (American Accreditation Association)</span>
+        </div>
+        <div class="logo-item-v25">
+            <img src="images/WhatsApp Image 2026-03-02 at 1.00.13 PM.jpeg" alt="Nursing Council" class="center-logo-img">
+            <span data-ar="المجلس التمريضي الأردني" data-en="Jordanian Nursing Council">المجلس التمريضي الأردني</span>
+        </div>
+        <div class="logo-item-v25">
+            <img src="images/image.png" alt="High Health Council" class="center-logo-img">
+            <span data-ar="المجلس الصحي العالي" data-en="High Health Council">المجلس الصحي العالي</span>
+        </div>
+        <div class="logo-item-v25">
+            <img src="images/WhatsApp Image 2026-03-02 at 1.00.28 PM.jpeg" alt="Medical Council" class="center-logo-img">
+            <span data-ar="المجلس الطبي الأردني" data-en="Jordan Medical Council">المجلس الطبي الأردني</span>
+        </div>
+
+    </div>
+</div>
+<div class="p-group-v25">
+    <h4 data-ar="الوكالات والتمثيل الدولي" data-en="International Agencies">الوكالات والتمثيل الدولي</h4>
+    <div class="logo-stack-v25">
+                <div class="logo-item-v25">
+            <img src="images/WhatsApp Image 2026-03-02 at 12.58.05 PM.jpeg" alt="CAP" class="center-logo-img">
+            <span>CAP (College of American Pathologists)</span>
+        </div>
+        <div class="logo-item-v25">
+            <img src="images/WhatsApp Image 2026-03-02 at 1.02.05 PM.jpeg" alt="GenQA" class="center-logo-img">
+            <span>GenQA (Genomics Quality Assessment)</span>
+        </div>
+
+    </div>
+</div>
         </div>
     </div>
 </section>
@@ -768,7 +794,7 @@
                 <div class="circle-wrapper">
                     <div class="rotating-border"></div>
                     <div class="image-inner">
-                        <img src="images/image.png" alt="Dr. Salah Bohisi">
+                        <img src="images/c0962530-cbcf-44a9-b632-0095c6a0603f.jpg" alt="Dr. Salah Bohisi">
                     </div>
                 </div>
             </div>
@@ -845,7 +871,7 @@
                     <div class="i-circle"><i class="fas fa-map-marker-alt"></i></div>
                     <div>
                         <h5 data-ar="فرع عمّان - الأردن" data-en="Amman Branch - Jordan">فرع عمّان - الأردن</h5>
-                        <p data-ar="العبدلي - المقر الرئيسي" data-en="Al-Abdali - HQ"></p>
+                        <p data-ar="تلاع العلي - المقر الرئيسي" data-en="Tla'a Al-Ali - HQ">تلاع العلي - المقر الرئيسي</p>
                     </div>
                 </div>
                 <div class="info-item-v19">
@@ -865,13 +891,17 @@
                 </div>
             </div>
         </div>
-        <div class="map-container-v19">
-            <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3383.8475225916744!2d35.864047!3d31.996163!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzHCsDU5JzQ2LjIiTiAzNcKwNTEnNTAuNiJF!5e0!3m2!1sen!2sjo!4v1700000000000" 
-                width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy">
-            </iframe>
-        </div>
-
+<div class="map-container-v19">
+    <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3383.8569724128543!2d35.862089476360655!3d31.99591427400041!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151ca12ff4a4e963%3A0x58f56eaaa33b106e!2sTRUST%20for%20Management%20and%20Consulting%20Services!5e0!3m2!1sen!2sjo!4v1740942337719!5m2!1sen!2sjo" 
+        width="100%" 
+        height="450" 
+        style="border:0;" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+</div>
     </div>
 </section>
 <footer class="footer-final-v21">
@@ -916,11 +946,11 @@
                 </div>
 
                 <div class="f-contact-block">
-                    <i class="fas fa-globe"></i>
-                    <div class="f-details">
-                        <a href="mailto:info@qtrusts.com">info@qtrusts.com</a>
-                    </div>
-                </div>
+    <i class="fas fa-envelope"></i> 
+    <div class="f-details">
+        <a href="mailto:info@qtrusts.com">info@qtrusts.com</a>
+    </div>
+</div>
             </div>
         </div>
         <div class="footer-credits-bar">
