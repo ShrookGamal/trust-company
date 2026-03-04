@@ -180,7 +180,7 @@ if (regForm) {
             window.open(targetLink, '_blank');
         } 
         else if (lowerCourse.includes('lab') || lowerCourse.includes('microbiology') || lowerCourse.includes('hematology') || lowerCourse.includes('cytology') || lowerCourse.includes('ascp') || lowerCourse.includes('مختبرات')) {
-            const whatsapp47 = "962798502477";
+            const whatsapp47 = "962796034647";
             targetLink = `https://wa.me/${whatsapp47}?text=${encodeURIComponent("*طلب تسجيل مختبرات*\nالاسم: "+name+"\nالدورة: "+course)}`;
             window.open(targetLink, '_blank');
         }

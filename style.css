@@ -1090,7 +1090,9 @@ html {
     box-shadow: 0 5px 15px rgba(0,0,0,0.02);
     transition: 0.3s;
 }
-
+.logo-item-v25 img{
+    width: 120px;
+}
 .logo-item-v25 span { font-weight: 800; color: #1a1a5e; font-size: 0.95rem; }
 
 .logo-item-v25:hover {
